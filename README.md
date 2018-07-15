@@ -1,59 +1,44 @@
-# We have discontinued the publicly hosted version of RequestBin due to ongoing abuse that made it very difficult to keep the site up reliably. Please see instructions below for setting up your own self-hosted instance.
+# Self-hosted local RequestBin
+This is a fork of the wonderful but discontinued public [RequestBin](https://github.com/Runscope/requestbin).
 
-Originally Created by [Jeff Lindsay](http://progrium.com)
-
-License
--------
-MIT
+**This version lets you host your own requestb.in on your dev box without Heroku or Docker**!
 
 
-Looking to self-host?
-=====================
+* Original Creator: [Jeff Lindsay](http://progrium.com)
+* License:  MIT
+* Compatibility: Only tested on MacOS.
 
-[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
+## Prerequisites
 
-## Deploy your own instance using Heroku
-Create a Heroku account if you haven't, then grab the RequestBin source using git:
+* python 2
+* git
+* pipenv : the glorious one-stop replacement for pip and virtualenv. More info: https://docs.pipenv.org/
 
-`$ git clone git://github.com/Runscope/requestbin.git`
+    `$ brew install pipenv`
 
-From the project directory, create a Heroku application:
+## One-Time Setup
+- Download code:
 
-`$ heroku create`
+    `$ git clone git://github.com/vlanard/requestbin.git`
 
-Add Heroku's redis addon:
+- Install app dependencies & virtual env
 
-`$ heroku addons:add heroku-redis`
+    `$ pipenv install --python 2.7`
 
-Set an environment variable to indicate production:
+## Running Requestb.in
 
-`$ heroku config:set REALM=prod`
+#### To start:
 
-Now just deploy via git:
+	$ pipenv shell
+	$ python web.py
 
-`$ git push heroku master`
-
-It will push to Heroku and give you a URL that your own private RequestBin will be running.
-
-
-## Deploy your own instance using Docker
-
-On the server/machine you want to host this, you'll first need a machine with
-docker and docker-compose installed, then grab the RequestBin source using git:
-
-`$ git clone git://github.com/Runscope/requestbin.git`
-
-Go into the project directory and then build and start the containers
-
-```
-$ sudo docker-compose build
-$ sudo docker-compose up -d
-```
+Open in a browser: http://localhost:4000/
 
 Your own private RequestBin will be running on this server.
 
+#### To stop:
 
-Contributors
-------------
- * Barry Carlyon <barry@barrycarlyon.co.uk>
- * Jeff Lindsay <progrium@gmail.com>
+* `Ctrl-C` to exit program
+* `$ exit` to quit pipenv
+
+
